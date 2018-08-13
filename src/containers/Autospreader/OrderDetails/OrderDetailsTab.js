@@ -4,10 +4,14 @@ import Tabs, { TabPane } from '../../../components/uielements/tabs';
 import Select, { SelectOption } from '../../../components/uielements/select';
 import Button from '../../../components/uielements/button';
 import Box from '../../../components/utility/box';
-import LayoutWrapper from '../../../components/utility/layoutWrapper.js';import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import LayoutWrapper from '../../../components/utility/layoutWrapper.js';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import OrdersTab from './TabComponents/OrdersTab'
 import RoutinesTab from './TabComponents/RoutinesTab';
+import actions from '../../../redux/autospreader/actions';
+import { connect } from 'react-redux';
+
 
 // const TabPane = Tabs.TabPane;
 const Option = SelectOption;
@@ -16,7 +20,7 @@ function callback(key) { }
 
 const operations = <Button>Extra Action</Button>;
 
-class OrderDetails extends React.Component {
+class OrderDetailsTab extends React.Component {
     constructor(props) {
         super(props);
         this.newTabIndex = 0;
@@ -78,7 +82,7 @@ class OrderDetails extends React.Component {
         return (
             <LayoutWrapper>
                 {/* <Box title={<IntlMessages id="forms.Tabs.basicTitle" />}> */}
-                <Box>
+                
                     <Tabs defaultActiveKey="1" onChange={callback}>
                         
                         <TabPane tab="Routines(7)" key="1">
@@ -96,9 +100,9 @@ class OrderDetails extends React.Component {
                             Stratagies comes here
                         </TabPane>
                     </Tabs>
-                </Box>
+               
             </LayoutWrapper>
         );
     }
 }
-export default OrderDetails
+export default OrderDetailsTab
