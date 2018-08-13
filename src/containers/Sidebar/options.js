@@ -1,7 +1,7 @@
 import getDevSidebar from "../../customApp/sidebar";
 const options = [
   {
-    key: " ",
+    key: "",
     label: "sidebar.dashboard",
     leftIcon: "ion-grid"
   },
@@ -40,6 +40,7 @@ const options = [
     label: "sidebar.configuration",
     leftIcon: "ion-android-menu"
   },
+ 
 
   // {
   //   key: "mailbox",

@@ -5,6 +5,10 @@ import { BootstrapTable, TableHeaderColumn, DeleteButton } from 'react-bootstrap
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import OrdersTimeline from '../Timelines/OrdersTimeline'
 import RoutinesTimeline from '../Timelines/RoutinesTimeline'
+import LayoutContentWrapper from "../../../../components/utility/layoutWrapper.js";
+import ContentHolder from '../../../../components/utility/contentHolder';
+import { Col, Row, Icon } from 'antd';
+import Box from '../../../../components/utility/box';
 
 // const TabPane = Tabs.TabPane;
 const Option = SelectOption;
@@ -71,7 +75,7 @@ class OrdersTab extends React.Component {
             order = 'desc';
         }
     }
-    
+
     selectRow = {
         mode: 'radio' //radio or checkbox
     };
@@ -89,20 +93,39 @@ class OrdersTab extends React.Component {
     }
 
     render() {
+        const rowStyle = {
+            width: '100%',
+            display: 'flex',
+            flexFlow: 'row wrap'
+          };
+          const colStyle = {
+            marginBottom: '16px'
+          };
+          const gutter = 16;
         return (
-            <div>
-                <BootstrapTable ref='table' data={dataSource} selectRow={this.selectRow} deleteRow >
-                    <TableHeaderColumn dataField='exchange' dataSort={true}>Exchange</TableHeaderColumn>
-                    <TableHeaderColumn dataField='exchange_account' >Exchange Account</TableHeaderColumn>
-                    <TableHeaderColumn dataField='price' dataSort={true} dataAlign="center">Price(Local currency)</TableHeaderColumn>
-                    <TableHeaderColumn dataField='price' dataSort={true} dataAlign="center">Price(USD)</TableHeaderColumn>
-                    <TableHeaderColumn dataField='quantity' dataAlign="center">Quantity</TableHeaderColumn>
-                    <TableHeaderColumn dataField='per_filled' dataAlign="center">% Filled</TableHeaderColumn>
-                    <TableHeaderColumn dataField='orderid' isKey={true} dataSort={true}
-                        dataFormat={this.OrderscellButton.bind(this)} width='30%' dataAlign="center">Exchange Order Id</TableHeaderColumn>
-                    <TableHeaderColumn dataField='routineid'  dataFormat={this.RoutinescellButton.bind(this)} dataAlign="center" dataSort={true}>Routine Id</TableHeaderColumn>
-                </BootstrapTable>
-            </div>
+            <Row style={rowStyle} >
+                <Col span={24} >
+                    <Box>
+                        <div>
+                            <ContentHolder>
+                                <BootstrapTable ref='table' data={dataSource} selectRow={this.selectRow} deleteRow >
+                                    <TableHeaderColumn dataField='exchange' dataSort={true}>Exchange</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='exchange_account' >Exchange Account</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='price' dataSort={true} dataAlign="center">Price(Local currency)</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='price' dataSort={true} dataAlign="center">Price(USD)</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='quantity' dataAlign="center">Quantity</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='per_filled' dataAlign="center">% Filled</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='orderid' isKey={true} dataSort={true}
+                                        dataFormat={this.OrderscellButton.bind(this)} width='30%' dataAlign="center">Exchange Order Id</TableHeaderColumn>
+                                    <TableHeaderColumn dataField='routineid' dataFormat={this.RoutinescellButton.bind(this)} dataAlign="center" dataSort={true}>Routine Id</TableHeaderColumn>
+                                </BootstrapTable>
+                            </ContentHolder>
+                        </div>
+                    </Box>
+                </Col>
+            </Row>
+
+
         );
     }
 
